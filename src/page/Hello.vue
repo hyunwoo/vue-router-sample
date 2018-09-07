@@ -1,70 +1,19 @@
 <template lang="pug">
-  <div class="hello">
-    <h1>Welcome H.hyunwoo Template</h1>
-    <h4>vuex store</h4>
-    <h3 v-html="$store.getters.getCount"></h3>
-    <div>
-      <span v-on:click="increment" style="cursor: pointer">[ INCREMENT ]</span>
-      <span v-on:click="decrement" style="cursor: pointer">[ DECREMENT ]</span>
-    </div>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a href="https://vuejs.org" target="_blank">
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a href="https://forum.vuejs.org" target="_blank">
-          Forum
-        </a>
-      </li>
-      <li>
-        <a href="https://chat.vuejs.org" target="_blank">
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a href="https://twitter.com/vuejs" target="_blank">
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a href="https://github.com/hyunwoo/vue-template" target="_blank">
-          Github for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a href="http://router.vuejs.org/" target="_blank">
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a href="http://vuex.vuejs.org/" target="_blank">
-          vuex
-        </a>
-      </li>
-      <li>
-        <a href="http://vue-loader.vuejs.org/" target="_blank">
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/vuejs/awesome-vue" target="_blank">
-          awesome-vue
-        </a>
-      </li>
-    </ul>
-  </div>
+  .hello
+    h3 WT?
+    .card-group
+      template(v-for="card in cards")
+        card(:cardName="card.name")
+
 </template>
 
 <script>
 
+import Vue from 'vue';
 import { store } from '../vuex/store';
+import card from '../components/card';
+
+Vue.component('card', card);
 
 export default {
   name: 'HelloWorld',
@@ -72,8 +21,7 @@ export default {
   data() {
     return {
       msg: 'Welcome to Hanu Vue Template',
-      posX: 0,
-      posY: 0
+      cards: []
     };
   },
   computed: {
@@ -97,6 +45,17 @@ export default {
     async mousemoved() {
       console.log(this);
     }
+  },
+  // eslint-disable-next-line object-shorthand
+  created: function () {
+    // todo get data from server
+    console.log(this);
+
+    setTimeout(() => {
+      for (let i = 0; i < 5; i += 1) {
+        this.cards.push({ name: `name${i}` });
+      }
+    }, 1000);
   }
 };
 </script>
@@ -107,5 +66,7 @@ li
   background : #333
   color : #fff
   text-decoration: none
+.card-group
+  display: flex
 
 </style>
