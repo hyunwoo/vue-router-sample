@@ -1,9 +1,7 @@
 <template lang="pug">
   .hello
-    input(v-model.number="circle[0].cx")
-    input(v-model.number="circle[0].cy")
     div
-    svg(width="100%" height="300px" w)
+    svg(width="100%" height="600px" w)
       circle(v-for="c in circle" v-bind="c")
 
 </template>
@@ -57,10 +55,10 @@ export default {
         }
       }, 2000);
     }, 1000);
-
   },
   data() {
     return {
+      multiply: 1,
       circle: [{
         cx: 100,
         cy: 100,
