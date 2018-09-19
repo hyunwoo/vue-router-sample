@@ -13,11 +13,9 @@ import * as _ from 'lodash';
 import MixinBase from '../components/mixin-base';
 import { store } from '../vuex/store';
 import card from '../components/card';
-import Common from '../util/common';
+import * as Util from '../util';
 
-
-Vue.prototype.$util = Common;
-Vue.prototype.$_ = _;
+console.log(Util);
 
 // mixin Vue 생명주기와 관련하여 TODO 가 있는 경우 사용한다.
 // library , util 기능이 필요한경우에는 mixin 이 아닌 prototype 을 사용한다.
